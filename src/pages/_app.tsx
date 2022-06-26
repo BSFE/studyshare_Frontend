@@ -1,16 +1,28 @@
 import { css } from "@emotion/react";
 import type { AppProps } from "next/app";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Hydrate } from "react-query/hydration";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { GlobalStyles } from "styles/global-styles";
 import "antd/dist/antd.css";
+import { useRef } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const queryClientRef = useRef<QueryClient>();
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient();
+  }
+
   return (
-    <>
+    <QueryClientProvider client={queryClientRef.current}>
       {GlobalStyles}
-      <div css={layout}>
-        <Component {...pageProps} />
-      </div>
-    </>
+      <Hydrate state={pageProps.dehydratedState}>
+        <div css={layout}>
+          <Component {...pageProps} />
+        </div>
+      </Hydrate>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 export default MyApp;
