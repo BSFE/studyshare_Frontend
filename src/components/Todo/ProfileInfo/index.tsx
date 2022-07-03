@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ProfileInfoStyle } from "./style";
+import Image from "next/image";
 
 type Props = {
   Follower: number;
@@ -11,12 +12,13 @@ const ProfileInfo = ({ Follower, Following }: Props) => {
 
   const onClick = () => {
     setIsFollow((pre) => !pre);
+    alert("좋아요를 누르셨습니다.");
   };
   return (
     <>
       <div css={ProfileInfoStyle}>
         <div className="myProfilePhoto">
-          <img src="/images/common/profile.jpeg" alt="" />
+          <Image src="/images/common/profile.jpeg" alt="" />
         </div>
         <div className="info">
           <div>
@@ -35,11 +37,11 @@ const ProfileInfo = ({ Follower, Following }: Props) => {
 
         {isFollow ? (
           <button type="button" onClick={onClick}>
-            <img src="/images/common/following.svg" alt="팔로잉" />
+            <Image src="/images/common/following.svg" alt="팔로잉" />
           </button>
         ) : (
           <button type="button" onClick={onClick}>
-            <img src="/images/common/follow.svg" alt="팔로우" />
+            <Image src="/images/common/follow.svg" alt="팔로우" />
           </button>
         )}
       </div>

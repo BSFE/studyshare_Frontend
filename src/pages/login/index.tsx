@@ -9,6 +9,7 @@ import {
 } from "./style";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Login = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const Login = () => {
       <main css={loginWrap}>
         <form css={loginForm}>
           <h1 css={Logo}>
-            <img src="/images/common/logo.svg" alt="스터디쉐어 로고" />
+            <Image src="/images/common/logo.svg" alt="스터디쉐어 로고" />
           </h1>
 
           <input
@@ -53,7 +54,7 @@ const Login = () => {
           </ul>
 
           <button type="button" css={CloseButton} onClick={() => router.back()}>
-            <img src="/images/common/btn_close.svg" alt="화면닫기 버튼" />
+            <Image src="/images/common/btn_close.svg" alt="화면닫기 버튼" />
           </button>
         </form>
       </main>

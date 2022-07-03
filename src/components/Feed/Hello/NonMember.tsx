@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Hello, Signup } from "./style";
 import Link from "next/link";
 import { KAKAO_AUTH_URL } from "./OAuth";
+import Image from "next/image";
 
 const NonMember = () => {
   return (
@@ -17,7 +18,7 @@ const NonMember = () => {
       <div css={Signup}>
         <Link href={KAKAO_AUTH_URL}>
           <a>
-            <img
+            <Image
               src="https://asp.pointpark.com/PlusPointMember/resources/images/mobileHomePage/btn_kakao.png"
               alt="카카오로 로그인하기"
             />

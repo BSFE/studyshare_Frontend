@@ -1,4 +1,5 @@
 import { alarm, Icon } from "../style";
+import Image from 'next/image'
 
 type Props = {
   date: any;
@@ -10,7 +11,7 @@ export const AlarmReComment = ({ date, nickname, text }: Props) => {
   return (
     <button css={alarm} type="button">
       <h2 css={Icon}>
-        <img src="/images/alarm/alarm_comment.svg" alt="대댓글" />
+        <Image src="/images/alarm/alarm_comment.svg" alt="대댓글" />
       </h2>
 
       <section>

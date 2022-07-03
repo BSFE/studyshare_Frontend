@@ -1,12 +1,13 @@
 import { css } from "@emotion/react";
 import Link from "next/link";
+import Image from "next/image";
 
 const WriteBtn: React.FC = () => {
   return (
     <button type="button" css={WriteButton}>
       <div className="writeWrap">
         <Link href="/write">
-          <img src="/images/feed/btn_write.svg" alt="게시물 작성하기" />
+          <Image src="/images/feed/btn_write.svg" alt="게시물 작성하기" />
         </Link>
       </div>
     </button>

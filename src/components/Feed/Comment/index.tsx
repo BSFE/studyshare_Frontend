@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Comment, Profile } from "./style";
+import Image from 'next/image'
 
 type Props = {
   nickname: string;
@@ -27,7 +28,7 @@ const FeedComment: React.FC<Props> = ({
   return (
     <div css={Comment}>
       <div css={Profile}>
-        <img src="/images/feed/frodo.jpg" alt="프로도" />
+        <Image src="/images/feed/frodo.jpg" alt="프로도" />
       </div>
 
       <div className="comment">

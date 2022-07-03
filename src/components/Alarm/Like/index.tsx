@@ -1,4 +1,5 @@
 import { alarm, Icon } from "../style";
+import Image from 'next/image'
 
 type Props = {
   date: any;
@@ -9,7 +10,7 @@ export const AlarmLike = ({ date, nickname }: Props) => {
   return (
     <button css={alarm} type="button">
       <h2 css={Icon}>
-        <img src="/images/alarm/alarm_colorLike.svg" alt="좋아요" />
+        <Image src="/images/alarm/alarm_colorLike.svg" alt="좋아요" />
       </h2>
 
       <section>
