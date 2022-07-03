@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@emotion/css": "^11.9.0",
