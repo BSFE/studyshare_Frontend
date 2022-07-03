@@ -6,7 +6,6 @@ import {
 } from "./style";
 import FooterNav from "../../components/Common/FooterNav";
 import Header from "../../components/Common/Header";
-import Image from 'next/image'
 
 const Profile = () => {
   return (
@@ -16,7 +15,7 @@ const Profile = () => {
       <div css={ProfileWrapPadding}>
         <div css={ProfileWrap}>
           <button css={ProfileImg}>
-            <Image src="/images/common/btn_photo.svg" alt="" />
+            <img src="/images/common/btn_photo.svg" alt="" />
           </button>
         </div>
 

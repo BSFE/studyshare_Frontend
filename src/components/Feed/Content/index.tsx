@@ -4,7 +4,6 @@ import CommentHead from "../CommentHead";
 import FeedDesc from "../Desc";
 import FeedBoxInput from "../BoxInput";
 import { Carousel } from "antd";
-import Image from "next/image";
 
 // 하나의 피드 게시글
 const FeedContent: React.FC = () => {
@@ -14,21 +13,21 @@ const FeedContent: React.FC = () => {
 
       <Carousel>
         <div>
-          <Image
+          <img
             src="/images/feed/slider01.jpg"
             alt=""
             style={{ width: "100%" }}
           />
         </div>
         <div>
-          <Image
+          <img
             src="/images/feed/slider01.jpg"
             alt=""
             style={{ width: "100%" }}
           />
         </div>
         <div>
-          <Image
+          <img
             src="/images/feed/slider01.jpg"
             alt=""
             style={{ width: "100%" }}

@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import Image from 'next/image'
 import { Head, Profile, Nickname, MoreBtn } from "./style";
 import More from "../../Modal/More";
 
@@ -19,13 +18,13 @@ const FeedBoxHead = ({ nickname }: Props) => {
     <header css={Head}>
       <div className="left">
         <div css={Profile}>
-          <Image src="/images/feed/peach.jpg" alt="어피치" />
+          <img src="/images/feed/peach.jpg" alt="어피치" />
         </div>
         <p css={Nickname}>@{nickname}</p>
       </div>
 
       <button type="button" onClick={toggleModal} css={MoreBtn}>
-        <Image src="/images/feed/btn_more.svg" alt="더보기" />
+        <img src="/images/feed/btn_more.svg" alt="더보기" />
       </button>
 
       {isShowing && <More onClose={toggleModal} />}
