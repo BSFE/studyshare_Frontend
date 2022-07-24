@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-
 import { Head, Profile, Nickname, MoreBtn } from "./style";
 import More from "../../Modal/More";
 

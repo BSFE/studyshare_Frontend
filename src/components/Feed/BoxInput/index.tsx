@@ -1,4 +1,3 @@
-
 import { CommentInput, Profile, Input, Button, InputWrap } from "./style";
 
 //피드 댓글창

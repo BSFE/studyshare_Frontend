@@ -1,4 +1,5 @@
 import { Modal } from "./style";
+import Image from "next/image";
 
 type Props = { onClose?: any };
 
@@ -9,7 +10,7 @@ const MoreModal: React.FC<Props> = ({ onClose }) => {
         <div className="modal__box">
           <div className="modal__more">
             <button className="back" onClick={onClose}>
-              <img src="/images/common/header_back.svg" alt="취소버튼" />
+              <Image src="/images/common/header_back.svg" alt="취소버튼" />
               <h3>더보기</h3>
             </button>
           </div>

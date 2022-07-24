@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Hello, Signup } from "./style";
 import Link from "next/link";
 import { KAKAO_AUTH_URL } from "./OAuth";
-
 const NonMember = () => {
 
   return (
