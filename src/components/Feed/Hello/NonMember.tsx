@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Hello, Signup } from "./style";
 import Link from "next/link";
-import { KAKAO_AUTH_URL } from "./OAuth";
-const NonMember = () => {
+import { KAKAO_AUTH_URL } from "../../../utils/OAuth";
 
+const NonMember = () => {
   return (
     <section css={Card}>
       <div css={Hello}>
