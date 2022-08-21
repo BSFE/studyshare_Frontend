@@ -13,7 +13,7 @@ yarn dev
 - Next.js (SSR)
 - Typescript
 - SCSS (스타일)
-- react-query (상태관리)
+- recoil (상태관리)
 - React
 - storyBook
 
