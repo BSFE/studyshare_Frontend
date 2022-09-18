@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Hello, Signup } from "./style";
-import Link from "next/link";
-import { KAKAO_AUTH_URL } from "../../../utils/OAuth";
 
-const NonMember = () => {
+interface Props {
+  handleLogin: () => void;
+}
+const NonMember = ({ handleLogin }: Props) => {
   return (
     <section css={Card}>
       <div css={Hello}>
@@ -15,14 +16,12 @@ const NonMember = () => {
       </div>
 
       <div css={Signup}>
-        <Link href={KAKAO_AUTH_URL}>
-          <a>
-            <img
-              src="https://asp.pointpark.com/PlusPointMember/resources/images/mobileHomePage/btn_kakao.png"
-              alt="카카오로 로그인하기"
-            />
-          </a>
-        </Link>
+        <button type="button" onClick={handleLogin}>
+          <img
+            src="https://asp.pointpark.com/PlusPointMember/resources/images/mobileHomePage/btn_kakao.png"
+            alt="카카오로 로그인하기"
+          />
+        </button>
       </div>
     </section>
   );
