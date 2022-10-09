@@ -25,7 +25,7 @@ export const GlobalStyles = (
         -webkit-font-smoothing: antialiased;
       }
       html {
-        font-size: 10px;
+        font-size: 14px;
         /* Prevent font scaling in landscape */
         -webkit-text-size-adjust: none; /*Chrome, Safari, newer versions of Opera*/
         -moz-text-size-adjust: none; /*Firefox*/

@@ -7,6 +7,7 @@ import {
 import FooterNav from "../../components/Common/FooterNav";
 import Header from "../../components/Common/Header";
 
+// 프로필 변경하기 페이지
 const Profile = () => {
   return (
     <>

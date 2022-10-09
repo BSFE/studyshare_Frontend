@@ -3,6 +3,7 @@ import FooterNav from "components/Common/FooterNav";
 import { Setting } from "./style";
 import Link from "next/link";
 
+// 더보기 페이지
 const Setup = () => {
   return (
     <>

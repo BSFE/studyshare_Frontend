@@ -2,6 +2,7 @@ import Header from "../../components/Common/Header";
 import FooterNav from "../../components/Common/FooterNav";
 import { WriteWrap, TextAdd } from "./style";
 
+// 글쓰기 페이지
 const Write = () => {
   return (
     <>

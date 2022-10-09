@@ -3,22 +3,32 @@ import { ProfileInfoStyle } from "./style";
 import Image from "next/image";
 
 type Props = {
+  // 팔로워
   Follower: number;
+  // 팔로잉
   Following: number;
 };
 
 const ProfileInfo = ({ Follower, Following }: Props) => {
-  const [isFollow, setIsFollow] = useState(false);
+  const [isFollow, setIsFollow] = useState<boolean>(false);
 
+  /**
+   * 팔로우, 팔로잉 토글버튼
+   */
   const onClick = () => {
     setIsFollow((pre) => !pre);
-    alert("좋아요를 누르셨습니다.");
   };
   return (
     <>
       <div css={ProfileInfoStyle}>
         <div className="myProfilePhoto">
-          <Image src="/images/common/profile.jpeg" alt="" />
+          <Image
+            src="/images/common/profile.jpeg"
+            layout="fill"
+            width={100}
+            height={100}
+            alt=""
+          />
         </div>
         <div className="info">
           <div>
@@ -37,11 +47,21 @@ const ProfileInfo = ({ Follower, Following }: Props) => {
 
         {isFollow ? (
           <button type="button" onClick={onClick}>
-            <Image src="/images/common/following.svg" alt="팔로잉" />
+            <Image
+              src="/images/common/following.svg"
+              width={100}
+              height={100}
+              alt="팔로잉"
+            />
           </button>
         ) : (
           <button type="button" onClick={onClick}>
-            <Image src="/images/common/follow.svg" alt="팔로우" />
+            <Image
+              src="/images/common/follow.svg"
+              width={100}
+              height={100}
+              alt="팔로우"
+            />
           </button>
         )}
       </div>

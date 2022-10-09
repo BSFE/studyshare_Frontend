@@ -4,6 +4,7 @@ import ProfileInfo from "components/Todo/ProfileInfo";
 import TodoList from "components/Todo/List";
 import { css } from "@emotion/react";
 
+// 마이페이지 (내가 쓴 글, 나의 소개)
 const Mypage = () => {
   return (
     <>
@@ -11,10 +12,6 @@ const Mypage = () => {
       <ProfileInfo Follower={33} Following={11} />
 
       <section css={todoWrap}>
-        <TodoList />
-        <TodoList />
-        <TodoList />
-        <TodoList />
         <TodoList />
       </section>
       <FooterNav />
