@@ -17,18 +17,18 @@ const Feed = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
 
-  useEffect(() => {
-    axios
-      .post(KAKAO_AUTH_URL, {
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        setLogin(true);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .post(KAKAO_AUTH_URL, {
+  //       headers: {
+  //         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+  //       },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       setLogin(true);
+  //     });
+  // }, []);
 
   return (
     <>
