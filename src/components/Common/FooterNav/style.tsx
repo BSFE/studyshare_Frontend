@@ -9,6 +9,8 @@ export const FooterWrap = css`
   align-items: center;
   justify-content: space-evenly;
   li {
+    text-align: center;
+    display: inline-block;
     &.active {
       path {
         fill: #2656ff;
@@ -19,7 +21,7 @@ export const FooterWrap = css`
     }
     p {
       text-align: center;
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       color: #999999;
       font-weight: 500;
       line-height: 1.5rem;

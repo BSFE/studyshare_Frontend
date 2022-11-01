@@ -25,7 +25,6 @@ const FooterNav = () => {
                     fill="#999999"
                   />
                 </svg>
-                <p>홈</p>
               </a>
             </Link>
           </li>
@@ -33,8 +32,7 @@ const FooterNav = () => {
           <li className={router.asPath === "/chat" ? "active" : ""}>
             <Link href="/chat">
               <a className="chat">
-                <BsFillChatDotsFill />
-                <p>채팅</p>
+                <BsFillChatDotsFill size={30} />
               </a>
             </Link>
           </li>
@@ -54,7 +52,6 @@ const FooterNav = () => {
                     fill="#999999"
                   />
                 </svg>
-                <p>마이</p>
               </a>
             </Link>
           </li>
@@ -74,7 +71,6 @@ const FooterNav = () => {
                     fill="#999999"
                   />
                 </svg>
-                <p>설정</p>
               </a>
             </Link>
           </li>
