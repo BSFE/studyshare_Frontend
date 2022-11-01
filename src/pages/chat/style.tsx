@@ -6,3 +6,8 @@ export const FeedWrap = css`
   margin-bottom: 20vh;
   overflow: hidden;
 `;
+
+export const ChatWrap = css`
+  position: relative;
+  height: calc(100% - 85px);
+`
