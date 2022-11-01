@@ -40,7 +40,7 @@ const FooterNav = () => {
           </li>
 
           <li className={router.asPath === "/mypage" ? "active" : ""}>
-            <Link href="/mypage">
+            <Link href="/myPage">
               <a>
                 <svg
                   width="30"
@@ -60,7 +60,7 @@ const FooterNav = () => {
           </li>
 
           <li className={router.asPath === "/setup" ? "active" : ""}>
-            <Link href="/setup">
+            <Link href="/setUp">
               <a>
                 <svg
                   width="28"
