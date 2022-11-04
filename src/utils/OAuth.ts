@@ -1,2 +1,2 @@
-export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=d7ef99010604eb04b5a9bde6d53867f4&redirect_uri=http://15.164.152.33:8080
-`;
+export const KAKAO_BASE_URL = `https://kauth.kakao.com`
+export const KAKAO_AUTH_URL = `${KAKAO_BASE_URL}/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}&response_type=code`;

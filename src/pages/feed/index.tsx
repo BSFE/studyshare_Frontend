@@ -13,9 +13,12 @@ const Feed = () => {
   const [dataList, setDataList] = useState<string>("");
   const [login, setLogin] = useState<boolean>(false);
 
+
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
+
+
 
   return (
     <>

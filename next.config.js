@@ -3,7 +3,7 @@ module.exports = (phase, { defaultConfig }) => {
         return [
             {
                 source: '/api/v1/:path*',
-                destination: "http://15.164.152.33:8080/api/:path*",
+                destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
             },
         ];
     }
