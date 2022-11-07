@@ -18,8 +18,6 @@ const Feed = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
 
-
-
   return (
     <>
       <Header />

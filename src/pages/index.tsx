@@ -7,7 +7,8 @@ import FooterNav from "components/Common/FooterNav";
 import { useEffect, useState } from "react";
 import Router, {useRouter} from "next/router";
 import {KAKAO_BASE_URL} from '../utils/OAuth';
-import Axios from 'axios';
+import Axios from '../utils/axios';
+// import Axios from 'axios';
 
 export default function Home() {
   const [loading, setLoading] = useState(0);
@@ -27,19 +28,12 @@ export default function Home() {
       const kakaoCode = router.asPath.split('=')[1];
       console.log({kakaoCode});
       if(kakaoCode) {
-          const customAxios = Axios.create({
-              baseURL: '/',
-              timeout: 10000,
-              headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
-              }
-          })
-          customAxios.post(`${KAKAO_BASE_URL}/oauth/token`,{
-              grant_type: 'authorization_code',
-              client_id: process.env.NEXT_PUBLIC_KAKAO_API_KEY,
-              redirect_uri: process.env.NEXT_PUBLIC_REDIRECT_URI,
-              code: kakaoCode,
-          }).then(response => {
+          const params = new URLSearchParams();
+          params.append('grant_type', 'authorization_code');
+          params.append('client_id', process.env.NEXT_PUBLIC_KAKAO_API_KEY!);
+          params.append('redirect_uri', process.env.NEXT_PUBLIC_REDIRECT_URI!);
+          params.append('code', kakaoCode)
+          Axios.post(`${KAKAO_BASE_URL}/oauth/token`, params).then(response => {
               console.log('1111', response)
           });
       }
