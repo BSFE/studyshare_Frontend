@@ -15,17 +15,6 @@ export const FooterWrap = css`
       path {
         fill: #2656ff;
       }
-      p {
-        color: #2656ff;
-      }
-    }
-    p {
-      text-align: center;
-      font-size: 1.3rem;
-      color: #999999;
-      font-weight: 500;
-      line-height: 1.5rem;
-      margin-top: 0.5em;
     }
     .chat {
       font-size: 3rem;
