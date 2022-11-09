@@ -45,7 +45,7 @@ import {
                 <Link href="/">비밀번호 찾기</Link>
               </li>
               <li>
-                <Link href="/signup">회원가입</Link>
+                <Link href="/signUp">회원가입</Link>
               </li>
             </ul>
   

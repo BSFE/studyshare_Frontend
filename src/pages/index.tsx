@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import Router, {useRouter} from "next/router";
 import {KAKAO_BASE_URL} from '../utils/OAuth';
 import Axios from '../utils/axios';
-// import Axios from 'axios';
 
 export default function Home() {
   const [loading, setLoading] = useState(0);
@@ -37,8 +36,6 @@ export default function Home() {
               console.log('1111', response)
           });
       }
-
-
   }, []);
 
   return (
