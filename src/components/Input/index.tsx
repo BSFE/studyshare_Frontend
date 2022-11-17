@@ -1,12 +1,12 @@
-import React, { InputHTMLAttributes, DetailedHTMLProps} from 'react';
+import React, { InputHTMLAttributes, DetailedHTMLProps } from 'react';
 
-import {InputStyle} from './style';
+import { InputStyle } from './style';
 
-interface InputProps
-extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
+interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
 
-const  Input = (inputProps: InputProps) =>  {
-    const {...props} = inputProps;
-    return <input css={InputStyle} {...props}/>}
+const Input = (inputProps: InputProps, ref: any) => {
+    const { ...props } = inputProps;
+    return <input css={InputStyle} ref={ref} {...props} />;
+};
 
-export default Input;
+export default React.forwardRef(Input);
