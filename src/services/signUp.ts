@@ -18,7 +18,7 @@ export const postSignUp = async (request: ISignUpForm) => {
         password,
         nickname,
         email,
-        birth: 970707,
+        birth,
         sex
     });
 
