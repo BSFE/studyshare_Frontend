@@ -10,11 +10,23 @@ import {
   } from "./styles";
   import Link from "next/link";
   import { KAKAO_AUTH_URL } from "../../utils/OAuth";
-  import Axios from 'utils/axios'
-import { useEffect } from "react";
 import * as API from 'services';
+import { useState } from "react";
+
+interface Props {
+  username: string,
+  password: string
+}
 
   const Login = () => {
+   const [login, setLogin] = useState<Props>({
+    username: '',
+    password: ''
+   })
+
+   const handleChange = (e:any) => {
+    setLogin(prev => ({...prev, [e.target.name]: e.target.value}))
+   }
 
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
@@ -24,17 +36,13 @@ import * as API from 'services';
    * 로그인 버튼 클릭 했을 때
    * @param data : any
    */
-  const loginSubmit = async (data:any) => {
-    try {
-      const response = await API.postLogin(data);
-      if (response) {
-        alert('로그인을 성공하셨습니다.')
-      } else {
-        alert('로그인을 실패하셨습니다.')
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const loginSubmit = async (e:any) => {
+    e.preventDefault();
+    console.log('data--->', e)
+      const response = await API.postLogin(login);
+      console.log("diad0fia-->", response.status)
+      alert('로그인을 성공하셨습니다.')
+   
   }
 
 
@@ -49,9 +57,10 @@ import * as API from 'services';
             <input
               css={Input}
               placeholder="아이디 입력"
-              name="id"
-              type="id"
+              name="username"
+              type="username"
               className="id"
+              onChange={handleChange}
             />
   
             <input
@@ -59,6 +68,7 @@ import * as API from 'services';
               placeholder="비밀번호 입력"
               name="password"
               type="password"
+              onChange={handleChange}
             />
   
             <button type="submit" css={Button}>

@@ -17,11 +17,13 @@ const onRequestError = (error: AxiosError<any>): Promise<AxiosError> => {
 };
 
 const onResponse = (response: AxiosResponse): AxiosResponse => {
+
     // console.info(`[response] [${JSON.stringify(response)}]`);
     return response;
 };
 
 const onResponseError = async (error: any) => {
+    
     return Promise.reject(error.response);
 };
 
