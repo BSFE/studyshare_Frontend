@@ -10,18 +10,38 @@ import {
   } from "./styles";
   import Link from "next/link";
   import { KAKAO_AUTH_URL } from "../../utils/OAuth";
-  
+  import Axios from 'utils/axios'
+import { useEffect } from "react";
+import * as API from 'services';
+
   const Login = () => {
 
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
 
+  /**
+   * 로그인 버튼 클릭 했을 때
+   * @param data : any
+   */
+  const loginSubmit = async (data:any) => {
+    try {
+      const response = await API.postLogin(data);
+      if (response) {
+        alert('로그인을 성공하셨습니다.')
+      } else {
+        alert('로그인을 실패하셨습니다.')
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
     return (
       <>
         <main css={loginWrap}>
-          <form css={loginForm}>
+          <form css={loginForm} onSubmit={loginSubmit}>
             <h1 css={Logo}>
               <img src="/images/common/logo.svg" alt="스터디쉐어 로고" />
             </h1>
