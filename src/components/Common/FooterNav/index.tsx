@@ -28,15 +28,7 @@ const FooterNav = () => {
               </a>
             </Link>
           </li>
-
-          <li className={router.asPath === "/chat" ? "active" : ""}>
-            <Link href="/chat">
-              <a className="chat">
-                <BsFillChatDotsFill size={30} />
-              </a>
-            </Link>
-          </li>
-
+          
           <li className={router.asPath === "/myPage" ? "active" : ""}>
             <Link href="/myPage">
               <a>
