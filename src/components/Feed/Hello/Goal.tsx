@@ -15,12 +15,6 @@ const HelloGoal = ({ user }: Props) => {
         <strong className="highlight">오늘 목표한 스터디</strong>를<br />
         달성해보세요!
       </div>
-
-      <div css={Goal}>
-        <span className="date">21. 03. 14</span>
-        <h3>오늘의 달성도</h3>
-        <Progress percent={30} strokeColor="2656ff" />
-      </div>
     </section>
   );
 };

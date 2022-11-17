@@ -6,10 +6,18 @@ import {
     LoginLink,
     CloseButton,
     loginWrap,
+    Signup
   } from "./styles";
   import Link from "next/link";
+  import { KAKAO_AUTH_URL } from "../../utils/OAuth";
   
   const Login = () => {
+
+  const handleLogin = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
+
+
     return (
       <>
         <main css={loginWrap}>
@@ -48,6 +56,15 @@ import {
                 <Link href="/signUp">회원가입</Link>
               </li>
             </ul>
+
+            <div css={Signup}>
+              <button type="button" onClick={handleLogin}>
+                <img
+                  src="https://asp.pointpark.com/PlusPointMember/resources/images/mobileHomePage/btn_kakao.png"
+                  alt="카카오로 로그인하기"
+                />
+              </button>
+            </div>
   
             <button type="button" css={CloseButton}>
               <img src="/images/common/btn_close.svg" alt="화면닫기 버튼" />

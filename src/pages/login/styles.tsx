@@ -74,3 +74,16 @@ export const CloseButton = css`
     width: 60%;
   }
 `;
+
+
+export const Signup = css`
+  margin-top: 2em;
+  width: 100%100ex;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+  }
+`;

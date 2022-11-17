@@ -48,15 +48,3 @@ export const Goal = css`
     font-size: 0.8em;
   }
 `;
-
-export const Signup = css`
-  margin-top: 2em;
-  width: 100%100ex;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    width: 100%;
-  }
-`;
