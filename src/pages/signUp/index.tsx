@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, RefObject } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Checkbox, DatePicker, Radio, Form } from 'antd';
+import { DatePicker, Radio } from 'antd';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
 import * as API from 'services';
@@ -39,8 +39,17 @@ export default function SignUp() {
     const password = useRef<any>(null);
     password.current = watch('password');
 
-    const onSubmit: SubmitHandler<IFormInput> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+        try {
+            const response = await API.postSignUp(data);
+            if (response) {
+                router.push('/login');
+            } else {
+                throw new Error('회원가입 실패');
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
