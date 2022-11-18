@@ -12,6 +12,9 @@ import {
   import { KAKAO_AUTH_URL } from "../../utils/OAuth";
 import * as API from 'services';
 import { useState } from "react";
+import { accessToken } from "states/LoginState";
+import { useRecoilState } from "recoil";
+import { useRouter } from 'next/router'
 
 interface Props {
   username: string,
@@ -19,10 +22,12 @@ interface Props {
 }
 
   const Login = () => {
+   const [token, setToken] = useRecoilState(accessToken)
    const [login, setLogin] = useState<Props>({
     username: '',
     password: ''
    })
+   const router = useRouter()
 
    const handleChange = (e:any) => {
     setLogin(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -38,11 +43,21 @@ interface Props {
    */
   const loginSubmit = async (e:any) => {
     e.preventDefault();
-    console.log('data--->', e)
+    
+    try {
       const response = await API.postLogin(login);
-      console.log("diad0fia-->", response.status)
-      alert('로그인을 성공하셨습니다.')
-   
+      if(response) {
+        // 상태관리에 accessToken을 받아온다.
+        setToken(response.accessToken.token);
+        // 로컬 스토리지에는 refresh_token을 받아온다. setItem('키값', 받아올 값)
+        window.localStorage.setItem('refresh_token', response.accessToken.refreshToken);
+        router.push('./feed')
+      } else {
+        alert('로그인에 실패하셨습니다.')
+      }
+    } catch(error){
+      console.log('error--->', error);
+    }
   }
 
 

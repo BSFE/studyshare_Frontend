@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { GlobalStyles } from "styles/global-styles";
 import "antd/dist/antd.css";
 import { useRef } from "react";
+import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
@@ -17,9 +18,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClientRef.current}>
       {GlobalStyles}
       <Hydrate state={pageProps.dehydratedState}>
+        <RecoilRoot>
         <div css={layout}>
           <Component {...pageProps} />
         </div>
+        </RecoilRoot>
       </Hydrate>
       <ReactQueryDevtools />
     </QueryClientProvider>

@@ -5,10 +5,19 @@ export interface ILoginForm {
     password: String;
 }
 
+interface LoginProps {
+    username: string,
+    name: null | string,
+    accessToken : {
+        token: string,
+        refreshToken: string
+    }
+}
+
 export const postLogin = async (request: ILoginForm) => {
     const { username, password } = request;
 
-    const res = await axios.post<any>('/api/v1/login', {
+    const res = await axios.post<LoginProps>('/api/v1/login', {
         username,
         password
     });
