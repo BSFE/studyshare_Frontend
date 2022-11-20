@@ -1,10 +1,14 @@
 import Axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Modal } from 'antd';
-
+import { getCookies } from 'utils/cookie';
 const customAxios = Axios.create({
     baseURL: '/',
     timeout: 10000
 });
+
+const token = getCookies('access_token');
+
+customAxios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
     // console.info(`[request] [${JSON.stringify(config)}]`);
