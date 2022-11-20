@@ -1,11 +1,12 @@
 import { loginForm, Logo, Input, Button, LoginLink, CloseButton, loginWrap, Signup } from './styles';
 import Link from 'next/link';
-import { KAKAO_AUTH_URL } from '../../utils/OAuth';
+import { KAKAO_AUTH_URL } from 'utils/OAuth';
 import * as API from 'services';
 import { useState } from 'react';
-import { accessToken } from 'states/LoginState';
-import { useRecoilState } from 'recoil';
+// import { accessToken } from 'states/LoginState';
+// import { useRecoilState } from 'recoil';
 import { useRouter } from 'next/router';
+import { setCookies } from 'utils/cookie';
 
 interface Props {
     username: string;
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const Login = () => {
-    const [token, setToken] = useRecoilState(accessToken);
+    // const [token, setToken] = useRecoilState(accessToken);
     const [login, setLogin] = useState<Props>({
         username: '',
         password: ''
@@ -38,10 +39,17 @@ const Login = () => {
         const response = await API.postLogin(login);
         if (response) {
             // 상태관리에 accessToken을 받아온다.
-            setToken(response.accessToken.token);
+            // setToken(response.accessToken.token);
+            setCookies('access_token', response.accessToken.token, {
+                path: '/',
+                secure: true
+            });
+            setCookies('refresh_token', response.accessToken.refreshToken, {
+                path: '/',
+                secure: true
+            });
+            // 로컬 스토리지에는 refresh_token을 받아온다. setItem('키값', 받아올 값);
 
-            // 로컬 스토리지에는 refresh_token을 받아온다. setItem('키값', 받아올 값)
-            window.localStorage.setItem('refresh_token', response.accessToken.refreshToken);
             router.push('./feed');
         }
     };
