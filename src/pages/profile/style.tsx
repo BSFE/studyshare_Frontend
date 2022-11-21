@@ -33,6 +33,7 @@ export const InputWrap = css`
       width:100%;
       text-align: left;
     }
+    
     &.separation {
       display: flex;
       flex-direction: column;
