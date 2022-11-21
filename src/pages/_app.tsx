@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import { GetServerSidePropsContext } from 'next';
-import type { AppProps } from 'next/app';
+import App from 'next/app';
+import type { AppProps, AppContext } from 'next/app';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -8,6 +8,8 @@ import { GlobalStyles } from 'styles/global-styles';
 import 'antd/dist/antd.css';
 import { useRef } from 'react';
 import { RecoilRoot } from 'recoil';
+import cookies from 'next-cookies';
+import { setCookies } from 'utils/cookie';
 
 function MyApp({ Component, pageProps }: AppProps) {
     const queryClientRef = useRef<QueryClient>();
@@ -18,17 +20,39 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <QueryClientProvider client={queryClientRef.current}>
             {GlobalStyles}
-            <Hydrate state={pageProps.dehydratedState}>
-                <RecoilRoot>
-                    <div css={layout}>
-                        <Component {...pageProps} />
-                    </div>
-                </RecoilRoot>
-            </Hydrate>
+            <RecoilRoot>
+                <div css={layout}>
+                    <Component {...pageProps} />
+                </div>
+            </RecoilRoot>
             <ReactQueryDevtools />
         </QueryClientProvider>
     );
 }
+
+MyApp.getInitialProps = async (appContext: AppContext) => {
+    const appProps = await App.getInitialProps(appContext);
+
+    const { ctx } = appContext;
+
+    const allCookies = cookies(ctx);
+    const accessTokenByCookie = allCookies['accessToken'];
+
+    if (accessTokenByCookie !== undefined) {
+        const refreshTokenByCookie = allCookies['refreshToken'] || '';
+
+        setCookies('access_token', accessTokenByCookie, {
+            path: '/',
+            secure: true
+        });
+        setCookies('refresh_token', refreshTokenByCookie, {
+            path: '/',
+            secure: true
+        });
+    }
+
+    return { ...appProps };
+};
 
 export default MyApp;
 
