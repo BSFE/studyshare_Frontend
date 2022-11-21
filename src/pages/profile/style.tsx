@@ -26,10 +26,12 @@ export const InputWrap = css`
   div {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
-    margin: 10px 0;
+    margin: 0 0 20px 0;
     align-items: center;
     h5 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+      width:100%;
+      text-align: left;
     }
     &.separation {
       display: flex;
@@ -43,31 +45,40 @@ export const InputWrap = css`
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 5px;
         resize: none;
-        padding: 1em 0.7em;
+        padding: 0.7em;
         box-sizing: border-box;
-        font-size: 1.8rem;
+        font-size: 1.2rem;
+        height: 200px;
       }
     }
   }
   label {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     width: 100%;
   }
   input {
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     border-radius: 5px;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     height: 1.875em;
     padding: 1em;
     box-shadow: none;
     text-shadow: none;
   }
 
-  button {
-    color: #2656ff;
+  .submitButton {
+    background-color: #2656ff;
     margin-top: 2em;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
+    width: 100%;
+    grid-template-columns: auto;
+    border-radius: 5px;
+    button {
+      width: 100%;
+      color:#fff;
+      padding: 1rem;
+    }
   }
 `;
 

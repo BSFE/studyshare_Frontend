@@ -47,6 +47,10 @@ const Profile = () => {
               maxLength={40}
             />
           </div>
+
+          <div className="submitButton">
+            <button type="submit">등록하기</button>
+          </div>
         </form>
       </div>
 
