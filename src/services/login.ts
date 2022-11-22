@@ -14,6 +14,11 @@ interface LoginProps {
     };
 }
 
+/**
+ * 로그인
+ * @param request 
+ * @returns 
+ */
 export const postLogin = async (request: ILoginForm) => {
     const { username, password } = request;
 

@@ -9,9 +9,12 @@ const Write = () => {
       <Header />
       <main css={WriteWrap}>
         <section css={TextAdd}>
-          <h3>feed text</h3>
-          <textarea placeholder="내용을 입력해 주세요." />
+          <form>
+            <h3>feed text</h3>
+            <textarea placeholder="내용을 입력해 주세요." />
+          </form>
         </section>
+        
       </main>
       <FooterNav />
     </>

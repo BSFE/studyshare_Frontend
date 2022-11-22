@@ -20,10 +20,15 @@ export interface BoardProps {
 
 // 마아페이지
 export interface MyPage {
+    // 이름
     name: string,
+    // 생년월일
     birth: string,
+    // 팔로잉
     following: number,
+    // 팔로워
     follower: number,
+    // 자기소개
     intro: string
 }
 
@@ -34,7 +39,9 @@ export interface Comment {
 
 // 팔로워 & 팔로잉
 export interface Follower {
+    // 팔로워 멤버 아이디
     followMemberId : number,
+    // 팔로워 멤버 이름
     followMemberName : string,
     updatedAt: string
     }
