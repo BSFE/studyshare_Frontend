@@ -13,14 +13,20 @@ export interface ISignUpForm {
 export const postSignUp = async (request: ISignUpForm) => {
     const { username, password, nickname, email, birth, sex } = request;
 
-    const res = await axios.post<any>('/api/v1/signup', {
-        username,
-        password,
-        nickname,
-        email,
-        birth,
-        sex
-    });
-
-    return res.data;
+    try {
+        const resData = await axios
+            .post<any>('/api/v1/signup', {
+                username,
+                password,
+                nickname,
+                email,
+                birth,
+                sex
+            })
+            .then(({ status, data }) => (status === 200 || status === 201 ? data : false));
+        console.log({ resData });
+        return resData;
+    } catch (error) {
+        return false;
+    }
 };
