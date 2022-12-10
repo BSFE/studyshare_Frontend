@@ -16,8 +16,8 @@ interface LoginProps {
 
 /**
  * 로그인
- * @param request 
- * @returns 
+ * @param request
+ * @returns
  */
 export const postLogin = async (request: ILoginForm) => {
     const { username, password } = request;
@@ -29,7 +29,6 @@ export const postLogin = async (request: ILoginForm) => {
                 password
             })
             .then(({ status, data }) => (status === 200 || status === 201 ? data : false));
-
         return resData;
     } catch (error) {
         return false;

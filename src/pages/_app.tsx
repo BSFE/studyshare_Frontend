@@ -11,6 +11,10 @@ import { RecoilRoot } from 'recoil';
 import cookies from 'next-cookies';
 import { setCookies } from 'utils/cookie';
 
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+    import('../mocks');
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
     const queryClientRef = useRef<QueryClient>();
     if (!queryClientRef.current) {
