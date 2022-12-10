@@ -1,6 +1,21 @@
 // src/mocks/handlers.js
 import { rest } from 'msw';
-import { ISignUpForm } from 'services';
+import { IBoardItem, ISignUpForm } from 'services';
+
+const mockUserObj = [];
+
+const mockBoardObj: IBoardItem[] = [
+    {
+        boardId: 1,
+        imgurl: 'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+        content: '이것은 테스트용 mock data 입니다.',
+        likeMarkCnt: 3,
+        commentCnt: 0,
+        use_yn: false,
+        updatedAt: '2022-12-10',
+        commentList: ['게시글 댓글 리스트']
+    }
+];
 
 export const handlers = [
     // Handles a POST login request
@@ -66,14 +81,7 @@ export const handlers = [
         return res(
             ctx.status(200),
             ctx.json({
-                boardId: 1,
-                imgurl: '사진주소',
-                content: '게시글 내용',
-                likeMarkCnt: '좋아요 숫자',
-                commentCnt: '댓글 숫자',
-                use_yn: 'true(삭제여부) -> 삭제된건 아마 리턴 안됨',
-                updatedAt: '수정일(수정안된게시글이면 생성일)',
-                commentList: ['게시글 댓글 리스트']
+                data: mockBoardObj
             })
         );
     }),
