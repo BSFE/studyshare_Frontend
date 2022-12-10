@@ -1,6 +1,7 @@
 // src/mocks/handlers.js
 import { rest } from 'msw';
 import { IBoardItem, ISignUpForm } from 'services';
+import moment from 'moment';
 
 const mockUserObj = [];
 
@@ -65,11 +66,22 @@ export const handlers = [
     // Handles a POST board request
     rest.post('/api/v1/board', (req, res, ctx) => {
         if (req.body) {
+            const { content } = req.body as { content: string };
+            const newBoardObj = {
+                boardId: mockBoardObj.length + 1,
+                imgurl: 'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+                content: content,
+                likeMarkCnt: 0,
+                commentCnt: 0,
+                use_yn: false,
+                updatedAt: moment().format('YYYY-MM-DD'),
+                commentList: []
+            };
+            mockBoardObj.push(newBoardObj);
             return res(
                 ctx.status(200),
                 ctx.json({
-                    memberId: 1,
-                    content: 'mangu'
+                    data: newBoardObj
                 })
             );
         } else {

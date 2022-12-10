@@ -27,3 +27,22 @@ export const getBoard = async () => {
         throw error;
     }
 };
+
+export const postBoard = async (request: { content: string }) => {
+    const { content } = request;
+
+    try {
+        const resData = await axios
+            .post<any>('/api/v1/board', {
+                content
+            })
+            .then(({ status, data }) => (status === 200 || status === 201 ? data : false));
+        if (resData) {
+            return resData.data;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        throw error;
+    }
+};
