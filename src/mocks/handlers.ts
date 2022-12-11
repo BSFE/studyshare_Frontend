@@ -6,7 +6,7 @@ import { IBoardItem, ISignUpForm } from 'services';
 
 const mockUserObj = [];
 
-const mockBoardObj: IBoardItem[] = [
+let mockBoardObj: IBoardItem[] = [
     {
         boardId: 1,
         imgurl: 'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
@@ -120,13 +120,18 @@ export const handlers = [
         }
     }),
     // Handles a Get board request
-    rest.delete('/api/v1/board', (req, res, ctx) => {
-        console.log('111111', req.params);
-        return res(
-            ctx.status(200),
-            ctx.json({
-                msg: '성공'
-            })
-        );
+    rest.delete('/api/v1/board/:id', (req, res, ctx) => {
+        if (req.params) {
+            const { id } = req.params;
+            mockBoardObj = mockBoardObj.filter((board) => board.boardId !== Number(id));
+            return res(
+                ctx.status(200),
+                ctx.json({
+                    data: { msg: '성공' }
+                })
+            );
+        } else {
+            return res(ctx.status(500));
+        }
     })
 ];

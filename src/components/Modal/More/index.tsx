@@ -30,8 +30,8 @@ const MoreModal: React.FC<Props> = ({ onClose, handleIsEdit, onDelete }) => {
                             className="subBtn delete"
                             type="button"
                             onClick={() => {
-                                onClose();
                                 onDelete();
+                                onClose();
                             }}
                         >
                             댓글 삭제
