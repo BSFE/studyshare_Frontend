@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router';
+import {useQueryClient} from "react-query";
+import { useForm, SubmitHandler } from 'react-hook-form';
+
 import Header from '../../components/Common/Header';
 import FooterNav from '../../components/Common/FooterNav';
 import Button from 'components/Button';
 import { WriteWrap, TextAdd } from './style';
 import * as API from 'services';
-import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface IWriteForm {
     content: string;
@@ -12,6 +14,8 @@ interface IWriteForm {
 // 글쓰기 페이지
 const Write = () => {
     const router = useRouter();
+    const queryClient = useQueryClient();
+
     const {
         register,
         handleSubmit,
@@ -23,6 +27,7 @@ const Write = () => {
             const res = await API.postBoard(data);
             if (res) {
                 router.push('/feed');
+                queryClient.invalidateQueries('boards')
             }
         } catch (error) {
             console.log(error);
