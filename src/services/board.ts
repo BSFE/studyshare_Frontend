@@ -46,3 +46,40 @@ export const postBoard = async (request: { content: string }) => {
         throw error;
     }
 };
+
+export const putBoard = async (request: { id: number; content: string }) => {
+    const { id, content } = request;
+
+    try {
+        const resData = await axios
+            .put<any>('/api/v1/board', {
+                id,
+                content
+            })
+            .then(({ status, data }) => (status === 200 || status === 201 ? data : false));
+        if (resData) {
+            return resData.data;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const deleteBoard = async (request: { id: number }) => {
+    const { id } = request;
+    try {
+        const resData = await axios
+            .delete<IDataResponse<IBoardItem[]>>(`/api/v1/board/${id}`)
+            .then(({ status, data }) => (status === 200 || status === 201 ? data : false));
+
+        if (resData) {
+            return resData.data;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        throw error;
+    }
+};

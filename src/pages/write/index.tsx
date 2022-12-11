@@ -15,9 +15,7 @@ const Write = () => {
     const {
         register,
         handleSubmit,
-        watch,
-        formState: { errors },
-        control
+        formState: { errors }
     } = useForm<IWriteForm>();
 
     const onSubmit: SubmitHandler<IWriteForm> = async (data) => {

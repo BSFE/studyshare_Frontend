@@ -1,7 +1,8 @@
 // src/mocks/handlers.js
 import { rest } from 'msw';
-import { IBoardItem, ISignUpForm } from 'services';
 import moment from 'moment';
+
+import { IBoardItem, ISignUpForm } from 'services';
 
 const mockUserObj = [];
 
@@ -100,19 +101,27 @@ export const handlers = [
     // Handles a PUT board request
     rest.put('/api/v1/board', (req, res, ctx) => {
         if (req.body) {
-            return res(
-                ctx.status(200),
-                ctx.json({
-                    memberId: 1,
-                    content: 'mangu'
-                })
-            );
+            const { id, content } = req.body as { id: number; content: string };
+            const findBoardIndex = mockBoardObj.findIndex((board) => board.boardId === id);
+            if (findBoardIndex === -1) {
+                return res(ctx.status(400));
+            } else {
+                mockBoardObj[findBoardIndex] = { ...mockBoardObj[findBoardIndex], boardId: id, content: content };
+
+                return res(
+                    ctx.status(200),
+                    ctx.json({
+                        data: { memberId: id, content: content }
+                    })
+                );
+            }
         } else {
             return res(ctx.status(500));
         }
     }),
     // Handles a Get board request
     rest.delete('/api/v1/board', (req, res, ctx) => {
+        console.log('111111', req.params);
         return res(
             ctx.status(200),
             ctx.json({
