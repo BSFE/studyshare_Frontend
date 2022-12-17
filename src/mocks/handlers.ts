@@ -194,5 +194,27 @@ export const handlers = [
         } else {
             return res(ctx.status(500));
         }
+    }),
+    // Handles a Delete comment request
+    rest.delete('/api/v1/board/:boardId/comment/:commentId', (req, res, ctx) => {
+        if (req.params) {
+            const { boardId, commentId } = req.params;
+            const findBoardIndex = mockBoardObj.findIndex((board) => board.boardId === Number(boardId));
+            if (findBoardIndex >= 0) {
+                mockBoardObj[findBoardIndex].commentList = mockBoardObj[findBoardIndex].commentList.filter(
+                    (comment) => comment.commentId !== Number(commentId)
+                );
+                return res(
+                    ctx.status(200),
+                    ctx.json({
+                        data: { msg: '성공' }
+                    })
+                );
+            } else {
+                return res(ctx.status(400));
+            }
+        } else {
+            return res(ctx.status(500));
+        }
     })
 ];
