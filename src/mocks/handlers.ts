@@ -159,9 +159,38 @@ export const handlers = [
                     return res(ctx.status(400));
                 }
             }
-            console.log('11111', boardId);
-            console.log('22222', req.body);
             return res(ctx.status(200));
+        } else {
+            return res(ctx.status(500));
+        }
+    }),
+    // Handles a PUT comment request
+    rest.put('/api/v1/board/:boardId/comment/:commentId', (req, res, ctx) => {
+        if (req.params && req.body) {
+            const { boardId, commentId } = req.params;
+            const { id, content } = req.body as { id: number; content: string };
+            const findBoardIndex = mockBoardObj.findIndex((board) => board.boardId === Number(boardId));
+            if (findBoardIndex === -1) {
+                return res(ctx.status(400));
+            } else {
+                const findCommentIndex = mockBoardObj[findBoardIndex].commentList.findIndex(
+                    (comment) => comment.commentId === Number(commentId)
+                );
+                if (findCommentIndex >= 0) {
+                    mockBoardObj[findBoardIndex].commentList[findCommentIndex] = {
+                        ...mockBoardObj[findBoardIndex].commentList[findCommentIndex],
+                        content: content
+                    };
+                    return res(
+                        ctx.status(200),
+                        ctx.json({
+                            data: { memberId: id, content: content }
+                        })
+                    );
+                } else {
+                    return res(ctx.status(400));
+                }
+            }
         } else {
             return res(ctx.status(500));
         }
