@@ -1,4 +1,5 @@
 export * from './board';
+export * from './comment';
 export * from './signUp';
 export * from './login';
 

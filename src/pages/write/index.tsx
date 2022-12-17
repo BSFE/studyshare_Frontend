@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import {useQueryClient} from "react-query";
+import { useQueryClient } from 'react-query';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import Header from '../../components/Common/Header';
@@ -27,7 +27,7 @@ const Write = () => {
             const res = await API.postBoard(data);
             if (res) {
                 router.push('/feed');
-                queryClient.invalidateQueries('boards')
+                queryClient.invalidateQueries('boards');
             }
         } catch (error) {
             console.log(error);

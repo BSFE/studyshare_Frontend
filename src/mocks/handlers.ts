@@ -2,7 +2,7 @@
 import { rest } from 'msw';
 import moment from 'moment';
 
-import { IBoardItem, ISignUpForm } from 'services';
+import { IBoardItem, ICommentItem, ISignUpForm } from 'services';
 
 const mockUserObj = [];
 
@@ -15,7 +15,7 @@ let mockBoardObj: IBoardItem[] = [
         commentCnt: 0,
         use_yn: false,
         updatedAt: '2022-12-10',
-        commentList: ['게시글 댓글 리스트']
+        commentList: []
     }
 ];
 
@@ -130,6 +130,38 @@ export const handlers = [
                     data: { msg: '성공' }
                 })
             );
+        } else {
+            return res(ctx.status(500));
+        }
+    }),
+    // Handles a POST comment request
+    rest.post('/api/v1/board/:boardId/comment', (req, res, ctx) => {
+        if (req.params && req.body) {
+            const { boardId } = req.params;
+            const { comment } = req.body as { comment: string };
+            if (boardId) {
+                const findBoardIndex = mockBoardObj.findIndex((board) => board.boardId === Number(boardId));
+                if (findBoardIndex >= 0) {
+                    mockBoardObj[findBoardIndex].commentList.push({
+                        commentId: 1,
+                        boardId: Number(boardId), // 게시글 번호
+                        content: comment, // 게시글 내용
+                        comments: [], // 답글
+                        likeMarkCnt: 0 // 좋아요 숫자
+                    });
+                    return res(
+                        ctx.status(200),
+                        ctx.json({
+                            data: { msg: '성공' }
+                        })
+                    );
+                } else {
+                    return res(ctx.status(400));
+                }
+            }
+            console.log('11111', boardId);
+            console.log('22222', req.body);
+            return res(ctx.status(200));
         } else {
             return res(ctx.status(500));
         }

@@ -1,5 +1,5 @@
 import axios from 'utils/axios';
-import { IDataResponse } from './index';
+import { IDataResponse, ICommentItem } from './index';
 
 export interface IBoardItem {
     boardId: number; // 게시글 번호
@@ -9,7 +9,7 @@ export interface IBoardItem {
     commentCnt: number; //댓글 숫자
     use_yn: boolean; // true(삭제여부) -> 삭제된건 아마 리턴 안됨
     updatedAt: string; // 수정일(수정안된게시글이면 생성일)
-    commentList: string[]; // ['게시글 댓글 리스트']
+    commentList: ICommentItem[]; // ['게시글 댓글 리스트']
 }
 
 export const getBoard = async () => {
